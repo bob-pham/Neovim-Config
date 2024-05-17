@@ -37,3 +37,25 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+--- Custom
+require'nvim-tree'.setup { view = { side = 'right'} }
+
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+--   pattern = {"*"},
+--   callback = function()
+--     vim.api.nvim_command("set formatoptions-=cro")
+--     vim.api.nvim_command("setlocal formatoptions-=cro")
+--   end
+-- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
+
+vim.g.floaterm_height = 0.4
+vim.g.floaterm_position = 'bottomright'
+vim.wo.relativenumber = true
