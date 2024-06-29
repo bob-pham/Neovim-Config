@@ -9,8 +9,19 @@ return {
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = false,
     version = "*",
+    config = function()
+      require "configs.ts-autotag"
+    end,
+    lazy = true,
+    event = "VeryLazy"
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
   },
   {
     "danymat/neogen",
